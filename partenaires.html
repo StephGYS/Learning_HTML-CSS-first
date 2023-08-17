@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nos partenaires</title>
+
+	<style>
+		
+		table{/*Parametrage du tableau*/
+			font-family: arial, sans-serif;
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		td , th{/*Parametrage des cellules*/
+			border: 1px solid rgb(116, 120, 98);
+			text-align: left;
+			padding: 10px;
+		}
+
+		tr:nth-child(even){/*nth-child: cibler les elements par ligne*/
+			background-color: rgb(0, 221, 221);
+		}
+	</style>
+</head>
+
+<body>
+	<center><h1> Nos differents partenaires </h1></center>
+    <table>
+    	<tr>
+    		<th>Entreprise</th>
+    		<th>Secteur</th>
+    		<th>Region</th>
+		</tr>
+
+		<tr>
+    		<th>Jean Factory</th>
+    		<th>Mode</th>
+    		<th>Nord</th>
+		</tr>
+
+		<tr>
+    		<th>Hat Factory</th>
+    		<th>Luxe</th>
+    		<th>PACA</th>
+		</tr>
+
+		<tr>
+    		<th>boot Factory</th>
+    		<th>Mode</th>
+    		<th>Bretagne</th>
+		</tr>
+	</table>
+
+	<center>
+		<h2>Vous voulez devenir partenaire, voici un formulaire:</h2>
+
+		<form> <!--Creation de formulaire-->
+			<label for="Entreprise">Le nom de votre entreprise </label><br>
+			<input type="text" id="entreprise" name="entreprise" valeur="Ikea"><br>
+			<label for="Secteur">Le nom de votre secteur </label><br>
+			<input type="text" id="secteur" name="secteur" valeur="Meuble"><br>
+			<label for="Region">Le nom de votre region </label><br>
+			<input type="text" id="region" name="region" valeur="Paris"><br> <br>
+			<input type="submit" value="Envoyer le formulaire">
+		</form>
+    </center>
+
+    <video controls> <!-- Inserer video -->
+    	<source src="file:///C:/Users/gnago/Desktop/Mon_site_internet/video_jean.mp4" type="video/mp4" >
+	</video>
+
+	<audio controls> <!--Inserer Audio -->
+		<source src="file:///C:/Users/gnago/Desktop/Mon_site_internet/audio.ogg" type="audio/ogg">
+	</audio> 
+	<br>
+	<br>
+	<br>
+	<!--Presse papier-->
+<input type="text" value="2 chemin des rouliers, REIMS." id="Tocopy">
+<button onclick="copier()">Copier l'adresse</button>
+
+<script>/*code du Presse papier */
+	
+	function copier(){
+		var copyText = document.getElementById("Tocopy");
+
+		copyText.select()
+		copyText.setSelectionRange(0,99999);
+
+		navigator.clipboard.writeText(copyText.value);
+
+		alert("Texte copié: " + copyText.value);
+	}
+</script>
+    <br>
+    
+	<center><a href="brouillon_index.html">Accueil</a></center>
+
+</body>
+</html>

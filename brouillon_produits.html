@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Nos produits</title>
+
+	<style >
+		.cartes{
+			display: flex;
+			flex-wrap: wrap;/*ligne suivante automatique: oui */
+			align-item: stretch;
+		}
+
+	    .carte{ /*Parametrage des boites*/
+	    	flex: 0 0 200px;
+	    	margin: 30px;
+	    	border: 10px solid rgb(66, 54, 235);/*bordure*/
+	    	box-shadow: 6px 6px 6px 6px rgba(245, 40, 145, 0.8); /*l'ombre*/
+	    }
+
+	    .cartes img{ /*parametrage de l'image*/
+	    	max-width: 100%;
+	    }
+
+	    .card .text > button{ /*parametrage des boutons*/
+	    	background: gray;
+	    	border: 0;
+	    	color: white;
+	    	padding: 10px;
+	    	width: 100%;
+	    }
+
+	</style> 
+
+
+</head>
+
+<body>
+	<h1><center> Voici les différents produits que nous proposons: </h1> </center>
+
+	<main class="cartes">
+		<article class="carte">
+			<img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/jean.jpg"width="200" height="200">
+
+			<div class="text">
+				<h3> Jean </h3>
+				<p>Ce jean est disponible dans toutes les tailles, il est fabriqué avec soin comme cela se fesait par le passé</p>
+				<button>Une vidéo de sa fabrication</button>
+			</div>
+		</article>
+
+		<article class="carte">
+			<img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/hat.jpg" width="200" height="200">
+
+			<div class="text">
+				<h3> Hat </h3>
+				<p>Ce chapeau est disponible dans toutes les tailles, il est fabriqué avec soin comme cela se fesait par le passé</p>
+				<button>Une vidéo de sa fabrication</button>
+			</div>
+		</article>
+
+		<article class="carte">
+			<img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/teeshirt.jpg"width="200" height="200">
+
+			<div class="text">
+				<h3> Tee-shirt </h3>
+				<p>Ce tee-short est disponible dans toutes les tailles, il est fabriqué avec soin comme cela se fesait par le passé</p>
+				<button>Une vidéo de sa fabrication</button>
+			</div>
+		</article>
+
+		<article class="carte">
+			<img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/skirt.jpg"width="200" height="200">
+
+			<div class="skirt">
+				<h3> Skirt </h3>
+				<p>Cette jupe est disponible dans toutes les tailles, il est fabriqué avec soin comme cela se fesait par le passé</p>
+				<button>Une vidéo de sa fabrication</button>
+			</div>
+		</article>
+	</main>
+
+	<center> <a href="brouillon_index.html">Page d'accueil </a><center>
+
+</body>
+
+
+
+</html>

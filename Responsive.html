@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Drag&Drop</title>
+
+	<style type="text/css">
+
+		h1 {
+			text-align: center;
+		}
+
+	</style>
+
+	<script type="text/javascript">
+		/* Parametrage du Drag&Drop */
+		function allowDrop(ev){
+			ev.preventDefault();
+		}
+
+		function drag(ev){
+			ev.dataTransfer.setData("text",ev.target.id);
+		}
+
+		function drop(ev){
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("text");
+			ev.target.appendChild(document.getElementById(data));
+		}
+
+	</script>
+
+</head>
+
+<body>
+	<strong><h1>Drag&Drop</h1></strong>
+
+	<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+
+	<img id="drag1" src="file:///C:/Users/gnago/Desktop/Mon_site_internet/imag3.jpg" draggable="true" ondragstart="drag(event)" width="200" height="70">
+
+</body>
+</html>

@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Le site de notre magasin</title>
+
+	<style>
+		*{ 
+			box-sizing: border-box; /*priorité à la dimension réelle de la boite*/
+		}
+
+		.row::aftet{ /*Parametrer les lignes*/
+			content: "";
+			clear: both; /*déplacement vers le bas afin de dégager les flottements à gauche et à droite.*/
+			display: table; /*affichage intérieur optimisée*/
+		}
+		
+		[Class*="col-"] { /*génerer un element automatiquement*/
+			float: left; /* l'élément doit flotter du côté gauche du bloc qui le contient*/
+			padding: 20px; /*marge intérieur*/
+		}
+
+		.header{
+			background-color: rgb(96, 99, 89) ;/*149, 199, 32*/
+			color:rgb(255, 255, 255);
+			padding: 10px;/**/
+		}
+
+		.menu ul { /*Création du style de menu 1*/
+			list-style-type: none;
+			margin: 0px;
+			padding: 0px;
+		}
+
+		.menu li { /*Création du style de menu 2*/
+			list-style-type: none; /*le types de marqueurs d'item(Ici aucun)*/
+			margin-bottom: 10px; /*Marge absolue entre les items */
+			padding: 10px;
+			background-color: rgb(54, 56, 48);
+			color:rgb(255, 255, 255);
+		}
+
+		.menu li:hover{ /*Changement de menu quand l'on le survole*/
+			background-color: rgb(66, 135, 245);
+		}
+
+		.aside { /*style sur les cotés*/
+			background-color: rgb(54,56,48) ;
+			padding: 20px;
+			color: rgb(255, 255, 255);
+			text-align: center;
+			font-size: 12px;
+		}
+
+		.footer{ /*Style du bas de page*/
+			background-color: rgb(77, 77, 84) ;
+			padding: 20px;
+			color: rgb(219, 19, 15);	
+			text-align: center;
+			font-size: 25px;		
+		}
+
+		h1{
+			animation: apparaitre 2s ease-in;
+		}
+
+		a{/*Parametrage des hyperliens */
+			color: blueviolet;
+		}
+
+		@media only screen and (min-width: 768px)
+		    {/*Responsive: style de format d'affichage de page internet sur l'ordinateur*/
+			.col-1 {width: 8%;}
+			.col-2 {width: 16%;} /*Prend 16% de la largeur de l'écran*/
+			.col-3 {width: 25%;}
+			.col-4 {width: 33%;}
+			.col-5 {width: 42%;}
+			.col-6 {width: 50%;}
+			.col-7 {width: 58%;}
+			.col-8 {width: 66%;}
+			.col-9 {width: 75%;}
+			.col-10 {width: 83%;}
+			.col-11 {width: 91%;}
+			.col-12 {width: 100%;}
+		} 
+
+		      /****Exemple Parametrage de caroussel d'images****/
+		.carousel {
+			margin-left: 25%;
+			margin-right: 25%;
+		}
+
+		ul.slides {
+			display: block;
+			position: relative;
+			height: 400px;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			list-style: none;
+		}
+
+		.slides * {
+			user-select: none;
+			-ms-user-select: none;
+			-moz-user-select: none;
+			-khtml-user-select: none;
+			-webkit-user-select: none;
+			-webkit-touch-callout: none;
+		}
+
+		ul.slides input {
+			display: none; 
+		}
+
+
+		.slide-container { 
+			display: block; 
+		}
+
+		.slide-image {
+			display: block;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			opacity: 0;
+			transition: all .1s ease-in-out;
+		}   
+
+		.slide-image img {
+			width: auto;
+			min-width: 100%;
+			height: 100%;
+		}
+
+		.carousel-controls {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			z-index: 999;
+			font-size: 100px;
+			line-height: 600px;
+			color: #fff;
+		}
+
+		.carousel-controls label {
+			display: none;
+			position: absolute;
+			padding: 0 20px;
+			opacity: 0;
+			transition: opacity .2s;
+			cursor: pointer;
+		}
+
+		.slide-image:hover + .carousel-controls label{
+			opacity: 0.5;
+		}
+
+		.carousel-controls label:hover {
+			opacity: 1;
+		}
+
+		.carousel-controls .prev-slide {
+			width: 49%;
+			text-align: left;
+			left: 0;
+		}
+
+		.carousel-controls .next-slide {
+			width: 49%;
+			text-align: right;
+			right: 0;
+		}
+
+		.carousel-dots {
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 20px;
+			z-index: 999;
+			text-align: center;
+		}
+
+		.carousel-dots .carousel-dot {
+			display: inline-block;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background-color: #fff;
+			opacity: 0.5;
+			margin: 10px;
+		}
+
+		input:checked + .slide-container .slide-image {
+			opacity: 1;
+			transform: scale(1);
+			transition: opacity 1s ease-in-out;
+		}
+
+		input:checked + .slide-container .carousel-controls label {
+		display: block; 
+		}
+
+		input#img-1:checked ~ .carousel-dots label#img-dot-1,
+		input#img-2:checked ~ .carousel-dots label#img-dot-2,
+		input#img-3:checked ~ .carousel-dots label#img-dot-3,
+		input#img-4:checked ~ .carousel-dots label#img-dot-4,
+		input#img-5:checked ~ .carousel-dots label#img-dot-5,
+		input#img-6:checked ~ .carousel-dots label#img-dot-6 {
+		opacity: 10;
+		}
+
+		input:checked + .slide-container .nav label { display: block; }
+		                  /****         ****/
+
+        .clock {/* Parametrage d'horloge digital*/
+        	position: absolute;
+        	top: 50%;
+        	left: 50%;
+        	transform: translateX(-50px) translateY(-50px);
+        	color:#17D4FE;
+        	font-size: 60px;
+        	font-family: Orbitron;
+        	letter-spacing: 7px;
+        }
+
+		@keyframes apparaitre{/*parametrage d'une animation*/
+			from {
+				opacity: 0;
+				transform: translateY(-100px);
+			}
+			to {
+				opacity: 1;
+				transform: translateY(0px);
+			}
+		}
+
+	</style>
+</head>
+
+<body>
+
+	<div class="header">
+		<center><i><strong><h1> Accueil Gys_Magasin</h1></i></strong></center>
+	</div>
+
+	<div class="row">
+		<div class="col-3 menu">
+			<ul>
+				<li><a href="brouillon_produits.html">Nos Produits</a></li>
+				<li><a href="qui_sommes_nous.html">Notre Entreprise</a></li>
+				<li><a href="essai.html">Essai</a></li>
+				<li><a href="partenaires.html">Nos Partenaires</a></li>
+				<li><a href="Responsive.html">Responsive</a></li>
+				<li><a href="Responsive_queries.html">Responsive queries</a></li>
+				<li><a href="promo.html">Promotion</a></li>
+
+
+			</ul>
+		</div>
+	
+		<div class="col-6">
+			<h1>Un magasin de vétements</h1>
+			<p>Le magasin a été crée par Jean Dupont</p>
+			<p>Mon magasin est une agence de vetement qui vous offre le temps et les ressources nécessaires pour vous aider dans la création site internet professionnel sur mesure. Nous croyons que même le meilleur CMS ne replace pas le travail d'une agence spécialisée. Créer une boutique en ligne seul, à partir d'une template comme le propose certaines solutions innovantes type "prestashop" ou "wizishop" demande du temps et des compétences que les futures e-comemrçants n'ont pas forcément.</p>
+    	</div>
+
+    	<div class="col-3">
+    		<div class="aside">
+    			<h2>Nos produits </h2>
+    			<p>Nos vetements sont produits dans la région de d'ile de france, dans un atelier reconnu pour sa qualité</p>
+    			<h2> Notre Entreprise</h2>
+    			<p>Notre boutiboutique a été crée en 2015 avec la volonté de ramener de la qualité au marché de la mode</p>
+    		</div>  		
+    	</div>
+    </div>	
+
+             <!--exemple Caroussel d'image--> 
+	<div>
+	  <div class="carousel">
+	    <ul class="slides">
+	      <input type="radio" name="radio-buttons" id="img-1" checked />
+	      <li class="slide-container">
+	        <div class="slide-image">
+	          <img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/hat.jpg" style="width: 65%;">
+	        </div>
+	        <div class="carousel-controls">
+	          <label for="img-3" class="prev-slide">
+	            <span>&lsaquo;</span>
+	          </label>
+	          <label for="img-2" class="next-slide">
+	            <span>&rsaquo;</span>
+	          </label>
+	        </div>
+	      </li>
+	      <input type="radio" name="radio-buttons" id="img-2" />
+	      <li class="slide-container">
+	        <div class="slide-image">
+	          <img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/teeshirt.jpg" style="width: 65%;">
+	        </div>
+	        <div class="carousel-controls">
+	          <label for="img-1" class="prev-slide">
+	            <span>&lsaquo;</span>
+	          </label>
+	          <label for="img-3" class="next-slide">
+	            <span>&rsaquo;</span>
+	          </label>
+	        </div>
+	      </li>
+	      <input type="radio" name="radio-buttons" id="img-3" />
+	      <li class="slide-container">
+	        <div class="slide-image">
+	          <img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/jean.jpg" style="width: 65%;">
+	        </div>
+	        <div class="carousel-controls">
+	          <label for="img-2" class="prev-slide">
+	            <span>&lsaquo;</span>
+	          </label>
+	          <label for="img-1" class="next-slide">
+	            <span>&rsaquo;</span>
+	          </label>
+	        </div>
+	      </li>
+	      <div class="carousel-dots">
+	        <label for="img-1" class="carousel-dot" id="img-dot-1"></label>
+	        <label for="img-2" class="carousel-dot" id="img-dot-2"></label>
+	        <label for="img-3" class="carousel-dot" id="img-dot-3"></label>
+	      </div>
+	    </ul>
+	  </div>
+	</div>
+	          <!--                       -->
+
+	          <!--Exemple d'horloge digital-->
+	<div id="MyClockDisplay" class="clock" onload="showTime()"></div>
+
+	<script type="text/javascript">
+		function showTime(){
+			var date = new Date();
+			var h = date.getHours(); // 0 - 23
+			var m = date.getMinutes(); // 0 - 59
+			var s = date.getSeconds(); // 0 - 59
+			var session = "AM";
+
+			if (h == 0) {h = 12;}
+		
+		if (h>12) {
+			h= h - 12;
+			session = "PM";
+		}
+
+		h= (h < 10) ? "0" + h : h;
+		m= (m < 10) ? "0" + m : m;
+		s= (s < 10) ? "0" + s : s;
+
+		var time = h + ":" + m + ":" + s + " " + session;
+		document.getElementById("MyClockDisplay").innerText = time;
+		document.getElementById("MyClockDisplay").textContent = time;
+
+		setTimeout(showTime, 1000);
+		}
+
+		showTime();
+	</script> 
+				 <!--                       -->
+
+	<div class="footer col-12">
+		<p>Appelez nous au 07 68 72 56 46</p>
+	</div>
+   
+	<script> /*Animation onclick*/
+		/*window.onclick = MyFunction;
+
+		function MyFunction (){
+			document.getElementsByTagName("BODY")[0].style.backgroundColor = "blue";
+		}*/
+	</script>
+	
+
+</body>
+
+
+
+</html>

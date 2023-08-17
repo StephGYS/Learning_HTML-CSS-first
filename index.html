@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>		<!--Entete-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mon magasin</title> <!--Commentaire-->
+</head>
+
+
+<style>  /*Paramétrage des balise en CSS*/
+		h1{ 
+		 	background-color: rgb(255,125,128); /* fond du texte */
+		 	color:white;
+		 	text-align: center; /*Centré Alignement du texte */
+		 	text-transform: uppercase; /* Maj, Min,... */
+		 	text-decoration: underline; /* */
+		 	text-shadow: 10px 10px 1px #000000; /* Metrre de l'ombre dans le texte*/
+		 	flex:1; /*Centrer tjrs les elements meme s'il bougent*/
+     }
+		h2{
+			background-color: rgb(255,255,204);
+			text-align: center;
+			color:black;	
+			text-shadow: 10px -10px 1px #c71010; /* Metrre de l'ombre dans le texte*/	
+		 }
+		h6{
+			background-color: rgb(255,255,0); /* fond du texte */
+		 	color:green;
+		 	text-align: right; /*Centré Alignement du texte */
+		 	text-transform: capitalize; /* 1er lettre en Maj */
+		 	text-decoration: ; /* */
+		 	/*flex: ; */
+		 }
+		p{
+			color: black;
+			text-align: justify; /* Bien Aligner du texte  */
+			text-indent: 20px; /*Indentation à la 1ere ligne */
+			letter-spacing: 3px; /*Distance entre les lettres*/
+			line-height: 30px; /*La taille des lignes */
+			word-spacing: 2.5px; /*la distance entre les mots */
+			border: solid ; /*Mettre les bordure*/
+		 }
+		body{ /*Modification de fond de couleur de la page*/
+			 background-color: rgb(252, 248, 247);
+		 }
+
+		.container{ /*style de boite */
+		 			width: 250px; 
+		 			height: 150px; 
+		 			color: red; 
+		 			margin: 0px auto; 
+		 			border: red solid;
+		  }
+
+		.flex-container{ /*style de flexbox */
+		 			display: flex;
+		 			flex-wrap: nowrap ; /*ligne suivante automatique: non */
+		 			background-color: skyblue; 
+		  }
+
+		.flex-container> div { /*style des sections div en flexbox*/
+		 			margin: 15px;
+		 			width: 150px;
+		 			background-color: lightgrey; 
+		 			line-height: center;
+		 			text-align: center;
+		 			font-size: 30px;
+		 }
+
+</style>
+
+<body>
+	<header> <!--ENTETE-->
+		<h1> Accueil Gys_Magasin</h1> <!--ecriture grande taille-->
+	</header>
+
+	<main> <!--Corps principale-->
+      <i><strong>UN OUTIL SIMPLE ET PERFORMANT POUR PILOTER VOTRE E-COMMERCE EN QUELQUES CLICS </i></strong> <!--En Italique et en gras-->
+      <h2>Le site internet de mon magasin</h2> <!--ecriture moyen taille-->
+
+      <center><img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/imag1.jpg" alt="site Gys Magasin" width="200" height="200"> </center>
+
+      <h6>Le magasin a été crée par Jean Dupont</h6>  <!--ecriture petite taille-->
+      <p>Mon Site marchand c’est une agence web qui vous offre le temps et les ressources nécessaires pour vous aider dans la création site internet professionnel sur mesure. Nous croyons que même le meilleur CMS ne replace pas le travail d'une agence spécialisée. Créer une boutique en ligne seul, à partir d'une template comme le propose certaines solutions innovantes type "prestashop" ou "wizishop" demande du temps et des compétences que les futures e-comemrçants n'ont pas forcément. </p> <!--paragraphe -->
+	</main>
+
+	<div class="container"> <!--créer une boite dans une section-->
+      <center><a href="produits.html">Nos produits </a> <!--Inserer lien hypertext--></center>
+      <center><a href="qui_sommes_nous.html">Notre entreprise </a></center>
+	</div>  
+
+	<div class="flex-container"> <!--créer une flexbox dans une section-->
+      <div><a href="produits.html">Nos produits </a></div> 
+      <div><a href="qui_sommes_nous.html">Notre entreprise </a></div>
+      <div>Produit 1</div>
+      <div>Produit 2</div>
+      <div><img src="file:///C:/Users/gnago/Desktop/Mon_site_internet/imag1.jpg" alt="site Gys Magasin" width="150" height="150"></div>
+      <div>Produit 4</div>
+      <div>Produit 5</div>
+
+	</div> 
+
+
+
+  <script> /* Animation au moment du click Javascript */
+  		window.onclick = MyFunction;
+
+  		function MyFunction () {
+  			  document.getElementsByTagName("BODY")[0].style.backgroundColor ="grey";
+  		}
+  </script>
+
+  <footer> <!--bas de page-->
+    Bas de page
+  </footer>
+
+</body>
+
+
+</html>
